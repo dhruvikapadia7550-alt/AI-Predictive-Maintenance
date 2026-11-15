@@ -397,7 +397,7 @@ elif page == "Prediction":
         history_file = "prediction_history.csv"
 
         new_record = pd.DataFrame({
-            "Timestamp": datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S")
+            "Timestamp": datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S"),
             "Machine Type": [machine_type],
             "Air Temperature": [air_temperature],
             "Process Temperature": [process_temperature],
