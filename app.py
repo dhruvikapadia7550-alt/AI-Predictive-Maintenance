@@ -355,7 +355,7 @@ elif page == "Prediction":
 
     # Prediction Button
     if st.button("Predict Machine Failure"):
-
+prediction_time = datetime.now(ZoneInfo("Asia/Kolkata"))
         import pandas as pd
         import joblib
 
@@ -397,7 +397,7 @@ elif page == "Prediction":
         history_file = "prediction_history.csv"
 
         new_record = pd.DataFrame({
-            "Timestamp": datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S"),
+           "Timestamp": prediction_time.strftime("%Y-%m-%d %H:%M:%S"),
             "Machine Type": [machine_type],
             "Air Temperature": [air_temperature],
             "Process Temperature": [process_temperature],
