@@ -4,7 +4,8 @@ import numpy as np
 import plotly.express as px
 import joblib
 import os
-
+from datetime import datetime
+from zoneinfo import ZoneInfo
 # Page Configuration
 st.set_page_config(
     page_title="AI Predictive Maintenance",
@@ -396,7 +397,7 @@ elif page == "Prediction":
         history_file = "prediction_history.csv"
 
         new_record = pd.DataFrame({
-            "Timestamp": [datetime.now().strftime("%Y-%m-%d %H:%M:%S")],
+            "Timestamp": datetime.now(ZoneInfo("Asia/Kolkata")).strftime("%Y-%m-%d %H:%M:%S")
             "Machine Type": [machine_type],
             "Air Temperature": [air_temperature],
             "Process Temperature": [process_temperature],
