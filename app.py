@@ -281,6 +281,7 @@ if page == "Dashboard":
     if os.path.exists(history_file):
 
         history = pd.read_csv(history_file)
+        history = history.iloc[::-1].reset_index(drop=True)
 
         st.dataframe(
             history,
@@ -355,7 +356,9 @@ elif page == "Prediction":
 
     # Prediction Button
     if st.button("Predict Machine Failure"):
-prediction_time = datetime.now(ZoneInfo("Asia/Kolkata"))
+
+        prediction_time = datetime.now(ZoneInfo("Asia/Kolkata"))
+
         import pandas as pd
         import joblib
 
