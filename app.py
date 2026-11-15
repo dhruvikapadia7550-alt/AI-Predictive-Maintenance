@@ -222,80 +222,80 @@ if page == "Dashboard":
             use_container_width=True
         )
 
-else:   
+    else:   
 
-    st.warning(
-        "Model comparison results not found. "
-        "Please run model_comparison.py first."
-    )
-st.divider()
+        st.warning(
+            "Model comparison results not found. "
+            "Please run model_comparison.py first."
+        )
+    st.divider()
 
-  # Random Forest Confusion Matrix
+    # Random Forest Confusion Matrix
 
-st.subheader("🎯 Random Forest Confusion Matrix")
+    st.subheader("🎯 Random Forest Confusion Matrix")
 
-confusion_file = "confusion_matrix.csv"
+    confusion_file = "confusion_matrix.csv"
 
-if os.path.exists(confusion_file):
-    cm_data = pd.read_csv(confusion_file, index_col=0)
+    if os.path.exists(confusion_file):
+        cm_data = pd.read_csv(confusion_file, index_col=0)
 
-    fig_cm = px.imshow(
-        cm_data,
-        text_auto=True,
-        aspect="auto",
-        color_continuous_scale="Blues",
-        title="Actual vs Predicted Machine Status",
-        labels={
-            "x": "Predicted Status",
-            "y": "Actual Status",
-            "color": "Number of Records"
-        }
-    )
+        fig_cm = px.imshow(
+            cm_data,
+            text_auto=True,
+            aspect="auto",
+            color_continuous_scale="Blues",
+            title="Actual vs Predicted Machine Status",
+            labels={
+                "x": "Predicted Status",
+                "y": "Actual Status",
+                "color": "Number of Records"
+            }
+        )
 
-    fig_cm.update_layout(
-        height=600,
-        margin=dict(l=100, r=60, t=100, b=100),
-        font=dict(size=16),
-        title_font_size=22
-    )
+        fig_cm.update_layout(
+            height=600,
+            margin=dict(l=100, r=60, t=100, b=100),
+            font=dict(size=16),
+            title_font_size=22
+        )
 
-    fig_cm.update_traces(
-        textfont_size=20
-    )
+        fig_cm.update_traces(
+            textfont_size=20
+        )
 
-    st.plotly_chart(
-        fig_cm,
-        use_container_width=True
-    )
+        st.plotly_chart(
+            fig_cm,
+            use_container_width=True
+        )
 
-else:
-    st.warning("Confusion matrix file not found.")
+    else:
+        st.warning("Confusion matrix file not found.")
 
 
-# Prediction History
-st.subheader("📋 Machine Prediction History")
+    # Prediction History
+    st.subheader("📋 Machine Prediction History")
 
-history_file = "prediction_history.csv"
+    history_file = "prediction_history.csv"
 
-if os.path.exists(history_file):
+    if os.path.exists(history_file):
 
-    history = pd.read_csv(history_file)
+        history = pd.read_csv(history_file)
 
-    st.dataframe(
-        history,
-        use_container_width=True
-    )
+        st.dataframe(
+            history,
+            use_container_width=True
+        )
 
-    st.download_button(
-        label="Download Prediction History",
-        data=history.to_csv(index=False),
-        file_name="machine_prediction_history.csv",
-        mime="text/csv"
-    )
+        st.download_button(
+            label="Download Prediction History",
+            data=history.to_csv(index=False),
+            file_name="machine_prediction_history.csv",
+            mime="text/csv"
+        )
 
-else:
+    else:
 
-    st.info("No prediction history available yet.")
+        st.info("No prediction history available yet.")
 # Home Page
 if page == "Home":
 
