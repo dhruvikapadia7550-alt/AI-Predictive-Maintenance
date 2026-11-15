@@ -161,7 +161,7 @@ if page == "Dashboard":
 
     st.subheader("🤖 Machine Learning Model Comparison")
 
-    comparison_file = "model_comparison_results.csv"
+    comparison_file = os.path.join(os.path.dirname(os.path.abspath(__file__)), "model_comparison_results.csv")
 
     if os.path.exists(comparison_file):
 
